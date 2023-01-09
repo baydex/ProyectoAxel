@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block menus %}
+    <div class="menus">
+        <a href="./formulario">
+            {% if registro %}
+                Cambia tus respuestas
+            {% else %}
+                Guarda tus respuestas
+            {% endif %}
+        </a>
+        <a href="./match">Encuentra amigos</a>
+        <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+    </div>
+{% endblock menus %}
+
+{% block content %}
+    
+
+{% endblock content %}
+

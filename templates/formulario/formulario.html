@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+
+{% block menus %}
+    <div class="menus">
+        <a href="../">Volver</a>
+        <a href="../match">Encuentra amigos</a>
+        <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+    </div>
+{% endblock menus %}
+
+{% block content %}
+    <h1>
+        Responde las siguientes preguntas
+    </h1>
+    {% if form.errors %}
+        <p>Hubo un error, comprueba tus datos.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'crear_persona' %}">
+        {% csrf_token %}
+        
+        {{form.edad.label_tag}}                         {{form.edad}}    
+        {{form.sexo.label_tag}}                         {{form.sexo}}
+        {{form.nivel_educativo.label_tag}}              {{form.nivel_educativo}}
+        {{form.ocupacion.label_tag}}                    {{form.ocupacion}}
+        {{form.introvertido_extrovertido.label_tag}}    {{form.introvertido_extrovertido}}
+        {{form.calmado_nervioso.label_tag}}             {{form.calmado_nervioso}}
+        {{form.mas_importancia.label_tag}}              {{form.mas_importancia}}
+        {{form.deporte.label_tag}}                      {{form.deporte}}
+        {{form.viajar.label_tag}}                       {{form.viajar}}
+        {{form.videojuegos.label_tag}}                  {{form.videojuegos}}
+        {{form.leer.label_tag}}                         {{form.leer}}
+        {{form.cine.label_tag}}                         {{form.cine}}
+        {{form.amistad.label_tag}}                      {{form.amistad}}
+        {{form.mascotas.label_tag}}                     {{form.mascotas}}
+        {{form.apariencia.label_tag}}                   {{form.apariencia}}
+        {{form.salud.label_tag}}                        {{form.salud}}
+        {{form.experimentar.label_tag}}                 {{form.experimentar}}
+        {{form.hijos.label_tag}}                        {{form.hijos}}
+        {{form.musica.label_tag}}                       {{form.musica}}
+        {{form.sueño.label_tag}}                        {{form.sueño}}
+
+        <input type="submit" value="Guardar">
+    </form> 
+
+{% endblock content %}
+

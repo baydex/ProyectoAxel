@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block menus %}
+    <div class="menus">
+        <a href="../">Volver</a>
+        <a href="../formulario">
+            {% if registro %}
+                Cambia tus respuestas
+            {% else %}
+                Guarda tus respuestas
+            {% endif %}
+        </a>
+        <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+    </div>
+{% endblock menus %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/match.css' %}">
+    <h1>Usuarios compatibles</h1>
+    <div class="tituloTabla">
+        <h3>Nombre</h3>
+        <h3>Email</h3>
+        <h3>Match</h3>
+    </div>
+    {% for usuario in usuarios %}
+        <a class="usuario" href="mailto:{{ usuario.user.email }}">
+            <p>{{ usuario.user }}</p>
+            <p>{{ usuario.user.email }}</p>
+            <p>{{ usuario.match }}%</p>
+        </a>
+    {% endfor %}
+
+{% endblock content %}

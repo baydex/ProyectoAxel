@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <!-- Encabezado -->
+    <header>
+        {% if user.is_authenticated %}
+          {% block menus %}{% endblock %}
+        {% else %}
+            <script>
+                window.location.href = "../"
+            </script>
+        {% endif %}
+    </header>
+    <!-- Contenido principal -->
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+    <!-- Pie de página -->
+    <footer>
+        <h3>
+            Búsqueda de amistad aplicando Lógica Difusa
+        </h3>
+        <h4>
+            Axel, Sofi y Jime
+        </h4>
+    </footer>
+</body>
+
+</html>
