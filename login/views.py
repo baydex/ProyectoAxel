@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RegistroForm 
+from .forms import RegistroForm
 from django.shortcuts import redirect
 
 from django.contrib.auth import login
@@ -13,11 +13,9 @@ def registro(request):
             user = form.save(commit=False)
             user.is_active = True
             user.save()
-            
+
             login(request, user)
             return redirect('../../')
-        else:
-            return HttpResponse("mierda")
 
     else:
         form = RegistroForm()

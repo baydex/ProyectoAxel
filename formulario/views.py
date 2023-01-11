@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def crear_persona(request):
-    
+
     if request.method == 'POST':
         form = PersonaForm(request.POST)
         if form.is_valid():
@@ -16,8 +16,6 @@ def crear_persona(request):
             Persona.objects.filter(user = request.user).delete()
             persona.save()
             return redirect('../../')
-        else:
-            return HttpResponse("mierda")
 
     else:
         form = PersonaForm()
